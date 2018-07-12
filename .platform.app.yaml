@@ -36,7 +36,7 @@ web:
             # The folder from which to serve static assets, for this location.
             #
             # This is a filesystem path, relative to the application root.
-            root: 'web'
+            root: 'public'
 
             # How long to allow static assets from this location to be cached.
             #
@@ -70,7 +70,7 @@ web:
             allow: true
             expires: 5m
             passthru: '/index.php'
-            root: 'web/sites/default/files'
+            root: 'public/sites/default/files'
 
             # Do not execute PHP scripts.
             scripts: false
@@ -85,7 +85,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    '/web/sites/default/files': 'shared:files/files'
+    '/public/sites/default/files': 'shared:files/files'
     '/tmp': 'shared:files/tmp'
     '/private': 'shared:files/private'
     '/drush-backups': 'shared:files/drush-backups'
@@ -95,7 +95,6 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       composer install
-      cd web
 
 # The configuration of scheduled execution.
 crons:
